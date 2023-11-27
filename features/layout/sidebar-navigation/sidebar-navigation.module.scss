@@ -139,3 +139,7 @@
     display: flex;
   }
 }
+
+.isCollapsed > .nav > .list > .collapseMenuItem {
+  transform: rotate(180deg);
+}
