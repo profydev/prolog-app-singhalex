@@ -18,7 +18,6 @@ const levelColors = {
 
 export function IssueRow({ projectLanguage, issue }: IssueRowProps) {
   const { name, message, stack, level, numEvents, numUsers } = issue;
-  console.log(issue);
   const firstLineOfStackTrace = stack.split("\n")[1];
 
   return (
