@@ -4,7 +4,7 @@ import styles from "./footer.module.scss";
 export function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={styles.version}>Version: 14.5.1</div>
+      <div className={styles.version}>Version: {process.env.appVersion}</div>
       <ul className={styles.links}>
         <Link href="#">Docs</Link>
         <Link href="#">API</Link>
