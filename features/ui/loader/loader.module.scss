@@ -1,5 +1,11 @@
-.loader > img {
+.loaderContainer {
+  display: flex;
+}
+
+.loader {
+  padding-block: 7.375rem;
   animation: spin 1s linear infinite;
+  margin: auto;
 }
 
 @keyframes spin {

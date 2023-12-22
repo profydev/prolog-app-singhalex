@@ -2,9 +2,13 @@ import styles from "./loader.module.scss";
 
 export function Loader() {
   return (
-    <div className={styles.loader}>
+    <div className={styles.loaderContainer}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="icons/loading-circle.svg" alt="Loader" />
+      <img
+        className={styles.loader}
+        src="icons/loading-circle.svg"
+        alt="Loader"
+      />
     </div>
   );
 }
