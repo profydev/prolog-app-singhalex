@@ -6,7 +6,7 @@ export function Loader() {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         className={styles.loader}
-        src="icons/loading-circle.svg"
+        src="/icons/loading-circle.svg"
         alt="Loader"
       />
     </div>
