@@ -16,6 +16,15 @@ describe("Project List", () => {
     cy.wait("@getProjects");
   });
 
+  it("shows loading indicator", () => {
+    cy.get("[data-testid='loader']").should("be.visible");
+  });
+
+  it("removes the loading indicator", () => {
+    cy.get("[data-testid='project-list']").should("be.visible");
+    cy.get("[data-testid='loader']").should("not.exist");
+  });
+
   context("desktop resolution", () => {
     beforeEach(() => {
       cy.viewport(1025, 900);
