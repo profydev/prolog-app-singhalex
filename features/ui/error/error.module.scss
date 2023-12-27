@@ -1,0 +1,31 @@
+@use "@styles/color";
+@use "@styles/space";
+@use "@styles/font";
+
+.container {
+  border: 1px solid color.$error-300;
+  border-radius: 8px;
+  background-color: color.$error-25;
+  padding: space.$s4;
+  margin: space.$s8 space.$s6;
+  font: font.$text-sm-medium;
+  color: color.$error-700;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: space.$s3;
+}
+
+.button {
+  font: inherit;
+  color: color.$error-700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: auto;
+  flex-shrink: 0;
+  display: flex;
+  gap: space.$s2;
+}
