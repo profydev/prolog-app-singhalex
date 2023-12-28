@@ -3,6 +3,30 @@ import mockProjects from "../fixtures/projects.json";
 import { ProjectStatus } from "@api/projects.types";
 
 describe("Project List", () => {
+  it("displays an error message", () => {
+    // Mock an error
+    cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+      statusCode: 500,
+    });
+
+    cy.visit("http://localhost:3000/dashboard");
+
+    // wait for the loader to finish
+    cy.wait(4000);
+    cy.get("[data-testid='error']")
+      .should("be.visible")
+      // click the try again button
+      .find("button")
+      .click();
+
+    cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+      fixture: "projects.json",
+    });
+
+    // check the the projects now show
+    cy.get("[data-testid='project-list']").should("be.visible");
+  });
+
   beforeEach(() => {
     // setup request mock
     cy.intercept("GET", "https://prolog-api.profy.dev/project", {

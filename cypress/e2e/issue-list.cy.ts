@@ -3,6 +3,31 @@ import mockIssues2 from "../fixtures/issues-page-2.json";
 import mockIssues3 from "../fixtures/issues-page-3.json";
 
 describe("Issue List", () => {
+  it("displays an error message", () => {
+    // mock an issue error
+    cy.intercept("GET", "https://prolog-api.profy.dev/issue?page=1", {
+      statusCode: 400,
+      body: { error: "Fake network error" },
+    });
+
+    cy.visit("http://localhost:3000/dashboard/issues");
+    // wait for loader to finish
+    cy.wait(4000);
+    cy.get("[data-testid='error']").contains("status code 400");
+
+    // mock a project error
+    cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+      statusCode: 500,
+      body: { error: "Fake network error" },
+    });
+
+    cy.visit("http://localhost:3000/dashboard/issues");
+
+    // wait for loader to finish
+    cy.wait(4000);
+    cy.get("[data-testid='error']").contains("status code 500");
+  });
+
   beforeEach(() => {
     // setup request mocks
     cy.intercept("GET", "https://prolog-api.profy.dev/project", {
