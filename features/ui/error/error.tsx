@@ -8,7 +8,7 @@ interface ErrorProps {
 
 export function Error({ message, clickHandler }: ErrorProps) {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid="error">
       <img src="/icons/alert-circle.svg" alt="alert" />
       <div>There was a problem while loading the project data: {message}</div>
       <button className={styles.button} onClick={clickHandler}>

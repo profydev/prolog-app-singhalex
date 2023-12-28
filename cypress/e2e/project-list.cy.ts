@@ -3,6 +3,20 @@ import mockProjects from "../fixtures/projects.json";
 import { ProjectStatus } from "@api/projects.types";
 
 describe("Project List", () => {
+  it("displays an error message", () => {
+    // Mock an error
+    cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+      statusCode: 500,
+      body: { error: "Fake network error" },
+    });
+
+    cy.visit("http://localhost:3000/dashboard");
+
+    // wait for the loader to finish
+    cy.wait(4000);
+    cy.get("[data-testid='error']").contains("status code 500");
+  });
+
   beforeEach(() => {
     // setup request mock
     cy.intercept("GET", "https://prolog-api.profy.dev/project", {
