@@ -11,6 +11,11 @@ export default {
   },
 } as Meta<typeof Error>;
 
-const Template: StoryFn<typeof Error> = () => <Error />;
+const Template: StoryFn<typeof Error> = () => (
+  <Error
+    message="This is a test"
+    clickHandler={() => console.log("Tried Again")}
+  />
+);
 
 export const Default = Template.bind({});
