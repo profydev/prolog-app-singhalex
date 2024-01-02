@@ -1,8 +1,23 @@
+@use "@styles/color";
+@use "@styles/space";
+@use "@styles/font";
+
 .button {
   cursor: pointer;
+  display: inline-flex;
+  align-items: flex-start;
+  font: font.$text-md-medium;
+  letter-spacing: 0.6px;
+  box-shadow: 0 1px 2px 0 rgb(16 24 40 / 5%);
+
+  span,
+  span img {
+    height: 100%;
+  }
 
   /* remove default button styles */
   border: none;
+  border-radius: space.$s2;
   margin: 0;
   padding: 0;
   background: transparent;
@@ -11,8 +26,206 @@
   -moz-osx-font-smoothing: inherit;
   appearance: none;
 
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
   &::-moz-focus-inner {
     border: 0;
     padding: 0;
   }
+}
+
+.button > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: space.$s2;
+}
+
+.small {
+  height: 38px;
+  padding: 8px 14px;
+  font: font.$text-sm-medium;
+}
+
+.medium {
+  height: 42px;
+  padding: 10px 16px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.large {
+  height: 46px;
+  padding: 10px 18px;
+  font: font.$text-md-medium;
+}
+
+.xlarge {
+  height: 50px;
+  padding: 12px 20px;
+  font: font.$text-md-medium;
+}
+
+.primary {
+  background-color: color.$primary-600;
+  color: white;
+  border: 1px solid color.$primary-600;
+
+  &:focus {
+    outline: 4px solid color.$primary-100;
+    box-shadow:
+      0 0 0 4px #f4ebff,
+      0 1px 2px 0 rgb(16 24 40 / 5%);
+  }
+
+  &:disabled {
+    background-color: color.$primary-200;
+    border: 1px solid color.$primary-200;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: color.$primary-700;
+    border: 1px solid color.$primary-700;
+  }
+}
+
+.secondary {
+  background-color: color.$primary-50;
+  color: color.$primary-700;
+  border: 1px solid color.$primary-50;
+
+  &:focus {
+    outline: 4px solid color.$primary-100;
+    box-shadow:
+      0 0 0 4px #f4ebff,
+      0 1px 2px 0 rgb(16 24 40 / 5%);
+  }
+
+  &:disabled {
+    background-color: color.$primary-25;
+    color: color.$primary-300;
+    border: 1px solid color.$primary-25;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: color.$primary-100;
+    border: 1px solid color.$primary-100;
+  }
+}
+
+.gray {
+  background-color: white;
+  color: color.$gray-700;
+  border: 1px solid color.$gray-300;
+
+  &:focus {
+    box-shadow:
+      0 0 0 4px #f2f4f7,
+      0 1px 2px 0 rgb(16 24 40 / 5%);
+  }
+
+  &:disabled {
+    color: color.$gray-300;
+    border: 1px solid color.$gray-200;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: color.$gray-50;
+    color: color.$gray-800;
+  }
+}
+
+.empty {
+  box-shadow: unset;
+  background-color: transparent;
+  color: color.$primary-700;
+  border: 1px solid transparent;
+
+  &:focus {
+    box-shadow:
+      0 0 0 4px #f2f4f7,
+      0 1px 2px 0 rgb(16 24 40 / 5%);
+  }
+
+  &:disabled {
+    color: color.$gray-300;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: color.$primary-50;
+  }
+}
+
+.empty-gray {
+  box-shadow: unset;
+  background-color: transparent;
+  color: color.$gray-500;
+
+  &:focus {
+    box-shadow:
+      0 0 0 4px #f2f4f7,
+      0 1px 2px 0 rgb(16 24 40 / 5%);
+  }
+
+  &:disabled {
+    color: color.$gray-300;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: color.$gray-50;
+    color: color.$gray-600;
+  }
+}
+
+.error {
+  background-color: color.$error-600;
+  color: white;
+  border: 1px solid color.$error-600;
+
+  &:focus {
+    outline: 4px solid color.$error-100;
+    box-shadow:
+      0 0 0 4px #fee4e2,
+      0 1px 2px 0 rgb(16 24 40 / 5%);
+  }
+
+  &:disabled {
+    border: 1px solid color.$error-200;
+    background-color: color.$error-200;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: color.$error-700;
+    border: 1px solid color.$error-700;
+  }
+}
+
+.empty-error {
+  background-color: transparent;
+  color: color.$error-700;
+  box-shadow: unset;
+
+  &:focus {
+    box-shadow:
+      0 0 0 4px #fee4e2,
+      0 1px 2px 0 rgb(16 24 40 / 5%);
+  }
+
+  &:disabled {
+    color: color.$error-300;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: color.$error-50;
+  }
+}
+
+.trailing span {
+  flex-direction: row-reverse;
 }
